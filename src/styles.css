@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#sign-main {
+   
+    background-image: url("../src/assets/background.jpg");
+    background-position: left ;
+  
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-form{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 20rem;
+    background-color: #CCCCCC;
+    padding: 2rem;
+    border-radius: 1rem;
+   
+}
+
+#form-buttons {
+    display: flex;
+  flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    /* Apply styles for screens up to 767px wide */
+    #sign-main {
+      background-image: none;
+      
+      
+     
+    }
+  }

@@ -1,0 +1,20 @@
+<div id="sign-main">
+  <form class="sign-form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label> Username</mat-label>
+      <input matInput placeholder="Ex. Jhon" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label> Password</mat-label>
+      <input type="password" matInput />
+    </mat-form-field>
+
+    <div id="form-buttons">
+      <button mat-raised-button color="primary">Log in</button>
+      <br />
+      <p style="color: white">Don't have an account ?</p>
+      <button mat-raised-button>Sign up</button>
+    </div>
+  </form>
+</div>
