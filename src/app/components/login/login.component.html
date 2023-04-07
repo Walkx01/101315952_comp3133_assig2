@@ -1,5 +1,6 @@
 <div id="sign-main">
   <form class="sign-form" (ngSubmit)="onSubmit()">
+    <h3 style="color: white">Please log in to manage employees</h3>
     <mat-form-field class="example-full-width">
       <mat-label> Username</mat-label>
       <input matInput placeholder="Ex. Jhon" />
@@ -14,7 +15,7 @@
       <button mat-raised-button color="primary">Log in</button>
       <br />
       <p style="color: white">Don't have an account ?</p>
-      <button mat-raised-button>Sign up</button>
+      <button routerLink="signup" mat-raised-button>Sign up</button>
     </div>
   </form>
 </div>

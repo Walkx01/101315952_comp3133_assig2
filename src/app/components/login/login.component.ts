@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/model/User';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  email!: string;
-  username!: string;
-  password!: string;
+  
+  
 
   onSubmit() {
     // Handle form submission here
