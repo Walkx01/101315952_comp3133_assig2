@@ -5,7 +5,7 @@ export enum Gender {
 }
 
 export interface Employee {
-  id: number;
+  id?: number;
   firstname: string;
   lastname: string;
   email: string;

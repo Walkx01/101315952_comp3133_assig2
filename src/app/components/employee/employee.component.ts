@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Employee } from './../../model/Employee';
+import { Employee, Gender } from './../../model/Employee';
 import { EmployeeService } from './../../services/employee.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { EmployeeService } from './../../services/employee.service';
 })
 export class EmployeeComponent {
   employees: Employee[] = [];
+
   displayedColumns: string[] = [
     'firstname',
     'lastname',

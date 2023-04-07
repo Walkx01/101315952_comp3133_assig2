@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AddemployeeComponent } from './components/addemployee/addemployee.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SignupComponent,
     EmployeeComponent,
+    AddemployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     GraphQLModule,
     HttpClientModule,
     MatTableModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

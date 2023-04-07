@@ -1,0 +1,8 @@
+#emp-dis{
+    display: flex;
+    justify-content: space-between;
+}
+#emp-list-card{
+    padding: 4rem;
+    
+}

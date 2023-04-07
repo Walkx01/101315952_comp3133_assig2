@@ -1,1 +1,25 @@
-<h1>hello</h1>
+<div id="emp-list-card">
+  <h1 color="primary">Employee Management</h1>
+  <div id="emp-dis">
+    <p>Manage all your existing employees or add a new employee</p>
+
+    <button mat-raised-button color="primary">
+      <mat-icon>add_circle</mat-icon>add new employee
+    </button>
+  </div>
+  <br />
+
+  <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+    <mat-text-column name="firstname"></mat-text-column>
+
+    <mat-text-column name="lastname"></mat-text-column>
+
+    <mat-text-column name="email"></mat-text-column>
+    <mat-text-column name="gender"></mat-text-column>
+
+    <mat-text-column name="salary"></mat-text-column>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
