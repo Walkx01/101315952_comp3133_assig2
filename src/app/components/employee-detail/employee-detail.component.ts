@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent {
-
 }

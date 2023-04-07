@@ -13,7 +13,7 @@ export class EmployeeService {
     return this.apollo.mutate({
       mutation: gql`
         mutation ($employee: EmployeeInput!) {
-          createEmployee(employee: $employee) {
+          addEmployee(employee: $employee) {
             id
             firstname
             lastname
@@ -39,6 +39,7 @@ export class EmployeeService {
       query: gql`
         query {
           getEmployees {
+            id
             firstname
             lastname
             email
@@ -49,4 +50,51 @@ export class EmployeeService {
       `,
     });
   }
+
+  getEmployeeById(id: number) {
+    return this.apollo.query({
+      query: gql`
+        query ($id: Int!) {
+          getEmployeeByID(id: $id) {
+            id
+            firtsname
+            lastname
+            email
+            gender 
+            salary
+  }`,
+    });
+  }
+
+  deleteEmployee(id: string) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation ($id: String!) {
+          deleteEmployee(id: $id) {
+            id
+          }
+        }
+      `,
+      variables: {
+        id: id,
+      },
+    });
+  }
+  
+
+  updateEmployee(employee: Employee) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation ($employee: EmployeeInput!) {
+          updateEmployee(employee: $employee) {
+            id
+            firstname
+            lastname
+            email
+            gender
+            salary
+          }`,
+    });
+  }
 }
+

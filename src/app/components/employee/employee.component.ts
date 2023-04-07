@@ -16,6 +16,7 @@ export class EmployeeComponent {
     'email',
     'gender',
     'salary',
+    'action',
   ];
 
   constructor(private employeeService: EmployeeService) {}
@@ -24,5 +25,12 @@ export class EmployeeComponent {
     this.employeeService.getAllEmployees().subscribe((result: any) => {
       this.employees = result.data.getEmployees;
     });
+  }
+
+  deleteEmployee(id: string) {
+    this.employeeService.deleteEmployee(id).subscribe((result: any) => {
+      this.employees = this.employees.filter((employee) => employee.id !== id);
+    });
+    console.log('delete employee', id);
   }
 }
