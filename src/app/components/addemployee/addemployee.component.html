@@ -1,1 +1,34 @@
-<p>addemployee works!</p>
+<div id="sign-main">
+  <form class="sign-form">
+    <mat-form-field class="example-full-width">
+      <mat-label> fistname</mat-label>
+      <input type="text" matInput placeholder="Ex. Jhon" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label> lastname</mat-label>
+      <input type="text" matInput placeholder="Ex. Doe" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label> email</mat-label>
+      <input type="email" matInput placeholder="Jhon@gmail.com" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Gender </mat-label>
+      <mat-select>
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{ gender }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label> salary</mat-label>
+      <input type="number" matInput />
+    </mat-form-field>
+
+    <div id="form-buttons">
+      <button mat-raised-button color="primary">Add Employee</button>
+    </div>
+  </form>
+</div>

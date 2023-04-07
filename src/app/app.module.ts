@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AddemployeeComponent } from './components/addemployee/addemployee.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { AddemployeeComponent } from './components/addemployee/addemployee.compo
     SignupComponent,
     EmployeeComponent,
     AddemployeeComponent,
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { AddemployeeComponent } from './components/addemployee/addemployee.compo
     HttpClientModule,
     MatTableModule,
     MatIconModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
