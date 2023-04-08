@@ -9,6 +9,45 @@ import { Employee, Gender } from '../model/Employee';
 export class EmployeeService {
   constructor(private apollo: Apollo) {}
 
+  updateEmployee(employee: Employee) {
+    console.log(employee);
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation (
+          $id: String!
+          $firstname: String!
+          $lastname: String!
+          $email: String!
+          $gender: String!
+          $salary: Float!
+        ) {
+          updateEmployee(
+            id: $id
+            firstname: $firstname
+            lastname: $lastname
+            email: $email
+            gender: $gender
+            salary: $salary
+          ) {
+            id
+            firstname
+            lastname
+            email
+            gender
+            salary
+          }
+        }
+      `,
+      variables: {
+        id: employee.id,
+        firstname: employee.firstname,
+        lastname: employee.lastname,
+        email: employee.email,
+        gender: employee.gender.toString(),
+        salary: employee.salary,
+      },
+    });
+  }
 
   createEmployee(employee: Employee) {
     return this.apollo.mutate({
@@ -90,21 +129,6 @@ export class EmployeeService {
       variables: {
         id: id,
       },
-    });
-  }
-
-  updateEmployee(employee: Employee) {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation ($employee: EmployeeInput!) {
-          updateEmployee(employee: $employee) {
-            id
-            firstname
-            lastname
-            email
-            gender
-            salary
-          }`,
     });
   }
 }

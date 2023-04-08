@@ -20,6 +20,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AddemployeeComponent } from './components/addemployee/addemployee.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EmployeeDetailComponent } from './components/employee-detail/employee-d
     EmployeeComponent,
     AddemployeeComponent,
     EmployeeDetailComponent,
+    UpdateEmployeeComponent,
   ],
   imports: [
     BrowserModule,

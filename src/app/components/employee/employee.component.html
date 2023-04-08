@@ -42,7 +42,11 @@
           <mat-icon>delete</mat-icon>
         </button>
 
-        <button mat-icon-button>
+        <button
+          (click)="updateEmployee(employee)"
+          mat-icon-button
+          color="accent"
+        >
           <mat-icon>edit</mat-icon>
         </button>
       </td>

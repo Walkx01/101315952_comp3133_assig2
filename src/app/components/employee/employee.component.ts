@@ -1,5 +1,6 @@
+import { UpdateEmployeeComponent } from './../update-employee/update-employee.component';
 import { EmployeeDetailComponent } from './../employee-detail/employee-detail.component';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Employee, Gender } from './../../model/Employee';
 import { EmployeeService } from './../../services/employee.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -40,6 +41,12 @@ export class EmployeeComponent {
 
   onRowClick(employee: Employee) {
     const dialogRef = this.dialog.open(EmployeeDetailComponent, {
+      data: { employee: employee },
+    });
+  }
+
+  updateEmployee(employee: Employee) {
+    const dialogRef = this.dialog.open(UpdateEmployeeComponent, {
       data: { employee: employee },
     });
   }

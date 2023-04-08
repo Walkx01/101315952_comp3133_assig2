@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee, Gender } from '../../model/Employee';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -36,7 +36,6 @@ export class AddemployeeComponent {
         });
         // Redirect to the employeelist
         this.router.navigate(['/employees']);
-        
       },
       (error) => {
         if (error.message.includes('E11000 duplicate key error')) {
