@@ -1,6 +1,8 @@
+import { EmployeeDetailComponent } from './../employee-detail/employee-detail.component';
 import { Component } from '@angular/core';
 import { Employee, Gender } from './../../model/Employee';
 import { EmployeeService } from './../../services/employee.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee',
@@ -11,15 +13,17 @@ export class EmployeeComponent {
   employees: Employee[] = [];
 
   displayedColumns: string[] = [
+    'No',
     'firstname',
     'lastname',
     'email',
-    'gender',
-    'salary',
     'action',
   ];
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.employeeService.getAllEmployees().subscribe((result: any) => {
@@ -32,5 +36,11 @@ export class EmployeeComponent {
       this.employees = this.employees.filter((employee) => employee.id !== id);
     });
     console.log('delete employee', id);
+  }
+
+  onRowClick(employee: Employee) {
+    const dialogRef = this.dialog.open(EmployeeDetailComponent, {
+      data: { employee: employee },
+    });
   }
 }

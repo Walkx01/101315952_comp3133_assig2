@@ -1,5 +1,5 @@
 <div id="emp-list-card">
-  <h1 color="primary">Employee Management</h1>
+  <h1>Employee Management</h1>
   <div id="emp-dis">
     <p>Manage all your existing employees or add a new employee</p>
 
@@ -9,7 +9,18 @@
   </div>
   <br />
 
-  <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+  <table
+    mat-table
+    [dataSource]="employees"
+    class="mat-elevation-z8"
+    matTooltip="Double   click  employee to view details"
+    matTooltipHideDelay="100"
+  >
+    <ng-container matColumnDef="No">
+      <th mat-header-cell *matHeaderCellDef>No</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
     <mat-text-column name="firstname"></mat-text-column>
 
     <mat-text-column name="lastname"></mat-text-column>
@@ -38,6 +49,10 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let employee; columns: displayedColumns"
+      (dblclick)="onRowClick(employee)"
+    ></tr>
   </table>
 </div>
