@@ -1,5 +1,6 @@
 import { UpdateEmployeeComponent } from './../update-employee/update-employee.component';
 import { EmployeeDetailComponent } from './../employee-detail/employee-detail.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Employee, Gender } from './../../model/Employee';
 import { EmployeeService } from './../../services/employee.service';
@@ -23,7 +24,8 @@ export class EmployeeComponent {
 
   constructor(
     private employeeService: EmployeeService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
@@ -36,6 +38,23 @@ export class EmployeeComponent {
         this.employees.push(newEmployee);
       }
     );
+
+    // Observe the screen size and hide the email column for small screens
+    this.breakpointObserver
+      .observe([Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.displayedColumns = ['No', 'name', 'action'];
+        } else {
+          this.displayedColumns = [
+            'No',
+            'firstname',
+            'lastname',
+            'email',
+            'action',
+          ];
+        }
+      });
   }
 
   deleteEmployee(id: string) {

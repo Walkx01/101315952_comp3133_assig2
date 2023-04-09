@@ -4,8 +4,12 @@
 }
 #emp-list-card{
     padding: 4rem;
+    max-width: 100vw;
 }
 
 tr:hover {
     cursor: pointer;
   }
+
+  
+
