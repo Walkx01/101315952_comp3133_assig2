@@ -25,6 +25,7 @@ export class UpdateEmployeeComponent {
 
   ngOnInit(): void {
     this.employee = Object.assign({}, this.data.employee);
+    console.log(this.employee.gender);
   }
 
   onSubmit() {
@@ -37,7 +38,6 @@ export class UpdateEmployeeComponent {
         });
       },
       (error) => {
-        console.log(error);
         this.snackBar.open('Error updating employee' + error.message, 'Close', {
           verticalPosition: 'top',
         });

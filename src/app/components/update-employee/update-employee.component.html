@@ -1,4 +1,5 @@
 <div>
+  {{ employee.gender }}
   <form #addEmployeeForm="ngForm" (ngSubmit)="onSubmit()" class="sign-form">
     <mat-form-field class="example-full-width">
       <mat-label>Firstname</mat-label>
@@ -53,11 +54,13 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Gender </mat-label>
-      <mat-select [(ngModel)]="employee.gender" name="gender" required>
-        <mat-option *ngFor="let gender of genders" [value]="employee.gender">{{
-          gender
-        }}</mat-option>
+      <mat-label>Gender</mat-label>
+      <mat-select name="gender" [(ngModel)]="employee.gender" required>
+        <mat-option
+          *ngFor="let gender of genders"
+          [value]="gender.toLowerCase()"
+          >{{ gender }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 

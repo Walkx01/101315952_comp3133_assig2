@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { BehaviorSubject } from 'rxjs';
 import { Employee, Gender } from '../model/Employee';
 
 @Injectable({
@@ -9,8 +10,9 @@ import { Employee, Gender } from '../model/Employee';
 export class EmployeeService {
   constructor(private apollo: Apollo) {}
 
+
+
   updateEmployee(employee: Employee) {
-    console.log(employee);
     return this.apollo.mutate({
       mutation: gql`
         mutation (
