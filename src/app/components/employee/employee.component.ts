@@ -31,6 +31,11 @@ export class EmployeeComponent {
       this.employees = employees;
     });
     this.employeeService.getAllEmployees();
+    this.employeeService.newEmployeeSubject.subscribe(
+      (newEmployee: Employee) => {
+        this.employees.push(newEmployee);
+      }
+    );
   }
 
   deleteEmployee(id: string) {

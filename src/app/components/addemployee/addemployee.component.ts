@@ -36,6 +36,9 @@ export class AddemployeeComponent {
         });
         // Redirect to the employeelist
         this.router.navigate(['/employees']);
+
+        // sorry for reloading the page, but I couldn't find a way to refresh the table
+        // window.location.reload();
       },
       (error) => {
         if (error.message.includes('E11000 duplicate key error')) {

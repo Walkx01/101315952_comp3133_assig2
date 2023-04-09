@@ -1,9 +1,11 @@
 <mat-toolbar>
-  <span style="color: gray" *ngIf="!username"
-    >Employee Manager {{ username }}</span
-  >
+  <span style="color: gray" *ngIf="!username">Employee Manager</span>
   <span style="color: gray" *ngIf="username">
-    Welcoome <span style="color: #ff4081">{{ username }}</span>
+    <!-- add a home icon -->
+    <a routerLink="/employees" style="color: gray">
+      <mat-icon style="color: #ff4081">home</mat-icon>
+    </a>
+    Welcome <span style="color: #ff4081">{{ username }}</span>
   </span>
   <span style="flex: 1 1 auto"></span>
   <app-logout-btn *ngIf="username" id="logout_btn">Logout</app-logout-btn>
