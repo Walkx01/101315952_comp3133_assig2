@@ -6,7 +6,7 @@
     "101315952_comp3133_assig2": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
+      "root": "./101315952_comp3133_assig2",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
