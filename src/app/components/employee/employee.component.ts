@@ -11,7 +11,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent {
-
   employees: Employee[] = [];
 
   displayedColumns: string[] = [
@@ -28,9 +27,10 @@ export class EmployeeComponent {
   ) {}
 
   ngOnInit() {
-    this.employeeService.getAllEmployees().subscribe((result: any) => {
-      this.employees = result.data.getEmployees;
+    this.employeeService.employeesSubject.subscribe((employees: Employee[]) => {
+      this.employees = employees;
     });
+    this.employeeService.getAllEmployees();
   }
 
   deleteEmployee(id: string) {

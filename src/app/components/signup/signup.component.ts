@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/model/User';
 import { UserService } from './../../services/user.service';
@@ -11,7 +12,8 @@ import { Component } from '@angular/core';
 export class SignupComponent {
   constructor(
     private UserService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   user: User = {
@@ -31,6 +33,8 @@ export class SignupComponent {
             verticalPosition: 'top',
           }
         );
+        // Redirect to the login page
+        this.router.navigate(['']);
       },
       (error) => {
         if (error.message.includes('duplicate key error')) {

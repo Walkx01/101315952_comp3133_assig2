@@ -8,47 +8,31 @@ import { Employee, Gender } from '../model/Employee';
   providedIn: 'root',
 })
 export class EmployeeService {
+  employeesSubject = new BehaviorSubject<Employee[]>([]);
   constructor(private apollo: Apollo) {}
 
-
-
-  updateEmployee(employee: Employee) {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation (
-          $id: String!
-          $firstname: String!
-          $lastname: String!
-          $email: String!
-          $gender: String!
-          $salary: Float!
-        ) {
-          updateEmployee(
-            id: $id
-            firstname: $firstname
-            lastname: $lastname
-            email: $email
-            gender: $gender
-            salary: $salary
-          ) {
-            id
-            firstname
-            lastname
-            email
-            gender
-            salary
+  getAllEmployees() {
+    this.apollo
+      .query({
+        query: gql`
+          query {
+            getEmployees {
+              id
+              firstname
+              lastname
+              email
+              gender
+              salary
+            }
           }
-        }
-      `,
-      variables: {
-        id: employee.id,
-        firstname: employee.firstname,
-        lastname: employee.lastname,
-        email: employee.email,
-        gender: employee.gender.toString(),
-        salary: employee.salary,
-      },
-    });
+        `,
+      })
+      .subscribe((result: any) => {
+        const employees = result.data.getEmployees;
+        this.employeesSubject.next(employees);
+      });
+
+    return this.employeesSubject.asObservable();
   }
 
   createEmployee(employee: Employee) {
@@ -87,11 +71,25 @@ export class EmployeeService {
     });
   }
 
-  getAllEmployees() {
-    return this.apollo.query({
-      query: gql`
-        query {
-          getEmployees {
+  updateEmployee(employee: Employee) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation (
+          $id: String!
+          $firstname: String!
+          $lastname: String!
+          $email: String!
+          $gender: String!
+          $salary: Float!
+        ) {
+          updateEmployee(
+            id: $id
+            firstname: $firstname
+            lastname: $lastname
+            email: $email
+            gender: $gender
+            salary: $salary
+          ) {
             id
             firstname
             lastname
@@ -101,6 +99,14 @@ export class EmployeeService {
           }
         }
       `,
+      variables: {
+        id: employee.id,
+        firstname: employee.firstname,
+        lastname: employee.lastname,
+        email: employee.email,
+        gender: employee.gender.toString(),
+        salary: employee.salary,
+      },
     });
   }
 
