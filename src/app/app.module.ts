@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddemployeeComponent } from './components/addemployee/addemployee.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
+import { LogoutBtnComponent } from './components/logout-btn/logout-btn.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import { UpdateEmployeeComponent } from './components/update-employee/update-emp
     AddemployeeComponent,
     EmployeeDetailComponent,
     UpdateEmployeeComponent,
+    LogoutBtnComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { UpdateEmployeeComponent } from './components/update-employee/update-emp
     MatSnackBarModule,
     MatDialogModule,
     MatTooltipModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent {
+
   employees: Employee[] = [];
 
   displayedColumns: string[] = [

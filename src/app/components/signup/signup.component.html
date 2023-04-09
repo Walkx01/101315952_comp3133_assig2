@@ -1,25 +1,47 @@
 <div id="sign-main">
-  <form class="sign-form">
+  <form #SignupForm="ngForm" (ngSubmit)="onSubmit()" class="sign-form">
     <mat-form-field class="example-full-width">
       <mat-label> Username</mat-label>
-      <input type="text" matInput placeholder="Ex. Jhon" />
+      <input
+        name="username"
+        [(ngModel)]="user.username"
+        type="text"
+        matInput
+        placeholder="Ex. Jhon"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label> email</mat-label>
-      <input type="email" matInput placeholder="Jhon@gmail.com" />
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="user.email"
+        matInput
+        placeholder="Jhon@gmail.com"
+        required=""
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label> Password</mat-label>
-      <input type="password" matInput />
+      <input
+        name="password"
+        [(ngModel)]="user.password"
+        type="password"
+        matInput
+        required=""
+      />
     </mat-form-field>
 
     <div id="form-buttons">
-      <button mat-raised-button color="primary">Sign up</button>
+      <button mat-raised-button color="primary" [disabled]="!SignupForm.valid">
+        Sign up
+      </button>
       <br />
       <p style="color: white">Already have have an account ?</p>
-      <button  routerLink="" mat-raised-button>Sign in</button>
+      <button routerLink="" mat-raised-button>Sign in</button>
     </div>
   </form>
 </div>
