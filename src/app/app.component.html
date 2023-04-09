@@ -1,5 +1,7 @@
 <mat-toolbar>
-  <span style="color: gray" *ngIf="!username">Employee Manager</span>
+  <span style="color: gray" *ngIf="!username"
+    >Employee Manager {{ username }}</span
+  >
   <span style="color: gray" *ngIf="username">
     Welcoome <span style="color: #ff4081">{{ username }}</span>
   </span>

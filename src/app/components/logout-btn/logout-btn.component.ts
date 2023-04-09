@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthguardService } from 'src/app/services/authguard.service';
 
 @Component({
   selector: 'app-logout-btn',
@@ -6,9 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./logout-btn.component.css'],
 })
 export class LogoutBtnComponent {
+  constructor(private authService: AuthguardService) {}
+  // logout() {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('username');
+  //   window.location.reload();
+  // }
+
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    this.authService.logout();
     window.location.reload();
   }
 }

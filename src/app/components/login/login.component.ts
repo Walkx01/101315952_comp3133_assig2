@@ -1,3 +1,4 @@
+import { AuthguardService } from './../../services/authguard.service';
 import { UserService } from './../../services/user.service';
 import { Component } from '@angular/core';
 import { User } from 'src/app/model/User';
@@ -13,7 +14,8 @@ export class LoginComponent {
   constructor(
     private userservice: UserService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthguardService
   ) {}
 
   user: User = {
@@ -26,7 +28,8 @@ export class LoginComponent {
     this.userservice.login(this.user).subscribe(
       () => {
         // login user using localStorage
-        localStorage.setItem('username', this.user.username);
+        // localStorage.setItem('username', this.user.username);
+        this.authService.login(this.user.username);
         this.router.navigate(['/employees']);
       },
       (error) => {
