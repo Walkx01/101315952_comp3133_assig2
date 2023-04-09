@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Employee, Gender } from '../model/Employee';
 
 @Injectable({
@@ -35,40 +35,48 @@ export class EmployeeService {
     return this.employeesSubject.asObservable();
   }
 
-  createEmployee(employee: Employee) {
-    return this.apollo.mutate({
-      mutation: gql`
-        mutation (
-          $firstname: String!
-          $lastname: String!
-          $email: String!
-          $gender: String!
-          $salary: Float!
-        ) {
-          addEmployee(
-            firstname: $firstname
-            lastname: $lastname
-            email: $email
-            gender: $gender
-            salary: $salary
+  createEmployee(employee: Employee): Observable<any> {
+    return this.apollo
+      .mutate({
+        mutation: gql`
+          mutation (
+            $firstname: String!
+            $lastname: String!
+            $email: String!
+            $gender: String!
+            $salary: Float!
           ) {
-            id
-            firstname
-            lastname
-            email
-            gender
-            salary
+            addEmployee(
+              firstname: $firstname
+              lastname: $lastname
+              email: $email
+              gender: $gender
+              salary: $salary
+            ) {
+              id
+              firstname
+              lastname
+              email
+              gender
+              salary
+            }
           }
-        }
-      `,
-      variables: {
-        firstname: employee.firstname,
-        lastname: employee.lastname,
-        email: employee.email,
-        gender: employee.gender.toString(),
-        salary: employee.salary,
-      },
-    });
+        `,
+        variables: {
+          firstname: employee.firstname,
+          lastname: employee.lastname,
+          email: employee.email,
+          gender: employee.gender.toString(),
+          salary: employee.salary,
+        },
+      })
+      .pipe(
+        tap((result: any) => {
+          const employees = this.employeesSubject.getValue().slice();
+          employees.push(result.data.addEmployee);
+          this.employeesSubject.next(employees);
+        })
+      );
   }
 
   updateEmployee(employee: Employee) {

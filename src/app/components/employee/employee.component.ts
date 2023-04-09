@@ -37,7 +37,6 @@ export class EmployeeComponent {
     this.employeeService.deleteEmployee(id).subscribe((result: any) => {
       this.employees = this.employees.filter((employee) => employee.id !== id);
     });
-    console.log('delete employee', id);
   }
 
   onRowClick(employee: Employee) {
